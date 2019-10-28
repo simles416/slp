@@ -1,0 +1,21 @@
+//data.json数据
+
+[
+          {
+            "accountName": "admin",
+            "password": "admin"
+          },
+          {
+            "accountName": "root",
+            "password": "root"
+          },
+          {
+            "accountName": "123",
+            "password": "123"
+          },
+          {
+            "accountName": "pan",
+            "password": "pan"
+          }
+          ]
+

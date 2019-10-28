@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.back{padding: 20px;}
+			.regist{
+				background: url(img/14887662188453706-n.jpg) no-repeat;
+				padding: 0 auto;
+				margin: 0 auto;
+				height: 700px;
+				width: 100%;
+				background-size: 100% 700px;
+				margin-top: 0px;
+			}
+			.container{float: right;
+				width: 320px;
+				height: 300px;
+				border-radius: 10px;
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				margin-right: 15px;
+				margin-top: 75px;
+				background-color: rgba(0, 0, 0, .6);
+				background-size: 100%;
+				color: #fff;
+				text-align: center;
+				}
+			.regist h1{text-align: center;}				
+			.regist label{margin-bottom: 10px;}
+			.regist input{margin-bottom: 10px;}
+			#btn{
+				height: 40px;
+				width: 120px;
+				border: none;
+				color: #fff;
+				font-size: 16px;
+				background-color:#EA8C37;
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				border-radius: 10px;
+				margin-top: 10px;
+				cursor: pointer;
+			}
+			.container input{
+				-webkit-border-radius: 5px;
+				-moz-border-radius: 5px;
+				border-radius: 5px;
+				margin-top: 10px;
+			}
+			
+		</style>
+		<script type="text/javascript">
+			var weburl="http://film.glkjjt.com/";
+		var xmlhttp;
+		
+		function createXMLHttpRequest(){
+			if(window.ActiveXObject){
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}else{
+				xmlhttp=new XMLHttpRequest();
+			}
+		}
+		function GetResult(){
+			var uname=document.getElementById("uname");
+			var upwd=document.getElementById("upwd");
+			var repd=document.getElementById("repwd");
+			if(upwd.value!=repd.value){
+				alert("密码不一致");return;
+			}
+//			
+			createXMLHttpRequest();
+			xmlhttp.open("POST",weburl+"api/Register",true);
+			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlhttp.onreadystatechange=RequestCallBack;
+			xmlhttp.send("username="+uname.value+"&password="+upwd.value);
+			
+		}
+		function RequestCallBack(){
+//			
+			if(xmlhttp.readyState==4){
+				if(xmlhttp.status==200){
+					alert("注册成功！");
+				}else if(xmlhttp.status==409){
+					alert("用户已经注册，请更换后重新注册！");
+				}
+				else{
+					alert("注册失败");
+				}
+			}
+		}
+		</script>
+	</head>
+	<body>
+		
+	<div class="regist">
+		<div class="back">
+			<a href="index.html"><img src="img/order_top_l.png"/></a>
+		</div>
+		<div class="container">
+			
+			<h1>注册</h3>
+		<label>&nbsp;&nbsp;&nbsp;&nbsp;用户名：</label><input type="text" id="uname" value="" placeholder="请输入用户名"/><br />
+		<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：</label><input type="password" id="upwd" value="" placeholder="请输入密码"/><br />
+		<label>确认密码：</label><input type="password" id="repwd" value="" placeholder="请再次输入密码"/><br />
+		<input type="button" id="btn" value="点击注册" onclick="GetResult()"/>
+			</div>
+			</div>
+	</body>
+</html>

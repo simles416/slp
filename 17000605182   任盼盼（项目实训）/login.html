@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.content {
+				padding: 0 auto;
+				margin: 0 auto;
+				height: 700px;
+				width: 100%;
+				background: url(img/LM-MyPhilips-Banner.jpg) no-repeat center;
+				background-size: 100% 700px;
+				margin-top: 0px;
+			}
+			
+			.login-wrap {
+				float: right;
+				width: 320px;
+				height: 300px;
+				border-radius: 10px;
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				margin-right: 15px;
+				margin-top: 75px;
+				background-color: rgba(11, 98, 98, .6);
+				background-size: 100%;
+			}
+			
+			.login-wrap h3 {
+				color: #fff;
+				font-size: 18px;
+				text-align: center;
+			}
+			
+			.name,
+			.code {
+				border: 1px solid #fff;
+				width: 230px;
+				height: 40px;
+				margin-left: 25px;
+				margin-bottom: 20px;
+				padding-left: 40px;
+			}
+			
+			.name {
+				background: url(img/首页-我的.png) no-repeat;
+				background-size: 15%;
+			}
+			
+			.code {
+				background: url(img/首页-我的.png) no-repeat;
+				background-size: 15%;
+			}
+			
+			.btn input {
+				height: 40px;
+				width: 120px;
+				float: left;
+				margin-right: 25px;
+				border: none;
+				color: #fff;
+				font-size: 16px;
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				border-radius: 10px;
+				margin-top: 10px;
+				cursor: pointer;
+			}
+			
+			input:active {
+				color: #fff;
+				border-color: #147a62
+			}
+			
+			.submit {
+				background: #ea8c37;
+				margin-left: 25px;
+			}
+			
+			.reset {
+				background: #bbb;
+			}
+			/**错误信息提醒**/
+			
+			#msg {
+				color: #ea8c37;
+				font-size: 14px;
+				padding-left: 40px;
+				padding-top: 10px;
+				clear: both;
+				font-weight: bold;
+			}
+			#msgs {
+				color: #ea8c37;
+				font-size: 14px;
+				padding-left: 40px;
+				padding-top: 10px;
+				clear: both;
+				font-weight: bold;
+			}
+			.back{padding: 20px;}
+		</style>
+	</head>
+
+	<body>
+		<div class="content">
+			<div class="back">
+			<a href="index.html"><img src="img/order_top_l.png"/></a>
+		</div>
+			<div class="login-wrap">
+				<form id="user_login" action="">
+					<h3>登 录</h3>
+
+					<input class="name" name="" id="accountName" type="text" placeholder="请输入用户名">
+					<div id="msg">
+						
+					</div>
+					<input class="code" name="password" id="password" type="password" placeholder="请输入密码">
+					<div id="msgs">
+					</div>
+					
+					<div class="btn">
+						<input type="button" id="submit" class="submit" value="登录">
+						<input type="reset" id="reset" class="reset" value="注册" >
+					</div>
+				</form>
+			</div>
+		</div>
+		<script type="text/javascript">
+			//验证表单是否为空，若为空则将焦点聚焦在input表单上，否则表单通过，登录成功 
+			$(function(){
+				$("#reset").click(function(){
+					window.location="Regist.html";
+				})
+				$("#submit").click(function(){
+			     var name="123";
+			     var pass="123";
+				 var accountName = $("#accountName").val().toString();
+				 var passwords = $("#password").val().toString();
+			
+			if(accountName==name && passwords==pass){
+					alert("登录成功！")
+					window.location="say.html";
+				}
+				else{
+					if(accountName!=name || accountName == "")
+			{ 
+				document.getElementById("msg").innerHTML= "请输入用户名";
+			$("#accountName").focus();
+			return false;
+			}
+			if(passwords!=pass || passwords == "")
+			{ 
+				document.getElementById("msgs").innerHTML= "请输入密码";
+			$("#password").focus();
+			return false;
+			}
+			}
+			})
+			})
+		</script>
+	</body>
+
+</html>
